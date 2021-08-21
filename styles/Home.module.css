@@ -18,12 +18,12 @@
 }
 
 .video {
-  width: 400px;
+  width: 100%;
   height: 400px;
 }
 
 .canvas {
-  width: 400px;
+  width: 100%;
   height: 400px;
   display: none;
 }

@@ -15,7 +15,7 @@ const Home: NextPage = () => {
       const stream = await navigator.mediaDevices.getUserMedia(
         {
           audio: false,
-          video: { width: 400, height: 400, facingMode: 'environment' }
+          video: { facingMode: 'environment' }
         }
       )
       const video = videoRef.current
