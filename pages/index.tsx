@@ -11,7 +11,7 @@ const Home: NextPage = () => {
 
   const onClick = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: false, video: true })
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: 'environment' } })
       const video = videoRef.current
       if (!video) return
       video.srcObject = stream
