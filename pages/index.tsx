@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import jsQR from 'jsqr'
@@ -8,6 +8,7 @@ import styles from '../styles/Home.module.css'
 const Home: NextPage = () => {
   const videoRef =  useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [qrResult, setQrResult] = useState('')
 
   const onClick = async () => {
     try {
@@ -37,6 +38,7 @@ const Home: NextPage = () => {
     if (code) {
       console.log('code', code)
       console.log('code.data', code?.data)
+      setQrResult(code?.data ?? '')
     } else {
       setTimeout( () => {
         checkQr()
@@ -53,6 +55,7 @@ const Home: NextPage = () => {
         <button onClick={() => onClick()}>カメラを起動</button>
         <video ref={videoRef}></video>
         <canvas ref={canvasRef} />
+        {qrResult && <p>結果: {qrResult}</p>}
       </main>
     </div>
   )
