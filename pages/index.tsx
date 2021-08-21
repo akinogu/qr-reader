@@ -12,7 +12,12 @@ const Home: NextPage = () => {
 
   const onClick = async () => {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: 'environment' } })
+      const stream = await navigator.mediaDevices.getUserMedia(
+        {
+          audio: false,
+          video: { width: 400, height: 400, facingMode: 'environment' }
+        }
+      )
       const video = videoRef.current
       if (!video) return
       video.srcObject = stream
@@ -53,8 +58,8 @@ const Home: NextPage = () => {
       </Head>
       <main className={styles.main}>
         <button onClick={() => onClick()}>カメラを起動</button>
-        <video ref={videoRef}></video>
-        <canvas ref={canvasRef} />
+        <video className={styles.video}  ref={videoRef}></video>
+        <canvas className={styles.canvas} ref={canvasRef} />
         {qrResult && <p>結果: {qrResult}</p>}
       </main>
     </div>
